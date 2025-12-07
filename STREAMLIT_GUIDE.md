@@ -58,13 +58,22 @@ The Streamlit version of The Simpsons Arcade Game provides a web-based, turn-bas
 
 ## Running the Application
 
-### Installation
+### Local Installation
+
+**Quick Start:**
 ```bash
 # Install dependencies
 pip install -r requirements.txt
 ```
 
-### Starting the Game
+**Note about Dependencies:**
+- The Streamlit version does NOT require pygame to run (only for desktop version)
+- pygame includes SDL2 libraries in pre-built wheels
+- System SDL2 libraries are auto-installed on Streamlit Cloud via `packages.txt`
+- No manual SDL2 installation needed for most users
+
+### Starting the Game Locally
+
 ```bash
 # Run the Streamlit app
 streamlit run streamlit_simpsons_arcade.py
@@ -80,6 +89,28 @@ This will:
 # Run on a different port
 streamlit run streamlit_simpsons_arcade.py --server.port 8080
 ```
+
+### Deploying to Streamlit Cloud
+
+**Streamlit Cloud is the recommended way to share your game online!**
+
+1. **Fork/Push to GitHub**
+   - Repository must be on GitHub
+
+2. **Deploy to Streamlit Cloud**
+   - Go to [share.streamlit.io](https://share.streamlit.io)
+   - Click "New app"
+   - Select repository and `streamlit_simpsons_arcade.py`
+   - Click "Deploy"
+
+3. **Dependencies are handled automatically**
+   - `requirements.txt` → Python packages
+   - `packages.txt` → System SDL2 libraries
+   - No additional configuration needed!
+
+**Your game will be live at:** `https://your-username-arcadeclassics-app-name.streamlit.app`
+
+For detailed deployment instructions including other platforms (Heroku, Docker, etc.), see [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ## Game Flow
 

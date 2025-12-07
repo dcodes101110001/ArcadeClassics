@@ -25,11 +25,48 @@ A Python recreation of the classic 1991 Konami arcade beat 'em up game "The Simp
 
 ### Installation
 
+#### Quick Start
+
 1. Make sure you have Python 3.7+ installed
 2. Install the required dependencies:
    ```bash
    pip install -r requirements.txt
    ```
+
+**That's it!** The pygame package includes SDL2 libraries in its pre-built wheels, so no additional system dependencies are needed for most users.
+
+#### Platform-Specific Notes
+
+- **Linux**: Works out of the box with pip-installed pygame
+- **macOS**: Works out of the box with pip-installed pygame  
+- **Windows**: Works out of the box with pip-installed pygame
+- **Streamlit Cloud**: Fully supported (see [Deployment Guide](DEPLOYMENT.md))
+
+#### Troubleshooting SDL Dependencies
+
+If you encounter SDL-related errors (`sdl2-config: not found`), you have two options:
+
+**Option 1: Use pre-built pygame wheels (recommended)**
+```bash
+pip install --upgrade pip
+pip install pygame==2.5.2 --only-binary :all:
+```
+
+**Option 2: Install system SDL2 libraries**
+
+Ubuntu/Debian:
+```bash
+sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev
+pip install -r requirements.txt
+```
+
+macOS (using Homebrew):
+```bash
+brew install sdl2 sdl2_image sdl2_mixer sdl2_ttf
+pip install -r requirements.txt
+```
+
+For complete deployment instructions including Streamlit Cloud, Docker, and other platforms, see [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ### How to Play
 
