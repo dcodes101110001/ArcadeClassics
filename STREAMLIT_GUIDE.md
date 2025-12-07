@@ -67,7 +67,8 @@ pip install -r requirements.txt
 ```
 
 **Note about Dependencies:**
-- The Streamlit version does NOT require pygame to run (only for desktop version)
+- The Streamlit version uses only streamlit and Pillow (not pygame)
+- However, `requirements.txt` includes pygame for users who want to run both versions
 - pygame includes SDL2 libraries in pre-built wheels
 - System SDL2 libraries are auto-installed on Streamlit Cloud via `packages.txt`
 - No manual SDL2 installation needed for most users
