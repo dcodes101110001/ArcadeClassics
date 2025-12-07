@@ -35,6 +35,15 @@ A Python recreation of the classic 1991 Konami arcade beat 'em up game "The Simp
 
 **That's it!** The pygame package includes SDL2 libraries in its pre-built wheels, so no additional system dependencies are needed for most users.
 
+#### Verify Installation
+
+To verify all dependencies are correctly installed, run:
+```bash
+python verify_dependencies.py
+```
+
+This will check pygame, SDL, streamlit, and all game modules.
+
 #### Platform-Specific Notes
 
 - **Linux**: Works out of the box with pip-installed pygame

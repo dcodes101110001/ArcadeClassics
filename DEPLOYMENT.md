@@ -19,7 +19,7 @@ This guide provides detailed instructions for deploying and running The Simpsons
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/dcodes101110001/ArcadeClassics.git
+   git clone https://github.com/<your-username>/ArcadeClassics.git
    cd ArcadeClassics
    ```
 
@@ -55,7 +55,7 @@ Streamlit Cloud is a free platform for hosting Streamlit apps. This game works p
 
 3. **Deploy the app**
    - Click "New app"
-   - Select your repository: `dcodes101110001/ArcadeClassics`
+   - Select your repository (e.g., `<your-username>/ArcadeClassics`)
    - Main file path: `streamlit_simpsons_arcade.py`
    - Click "Deploy"
 
