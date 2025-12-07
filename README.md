@@ -3,7 +3,11 @@ Emulations of classic arcade games
 
 ## The Simpsons Arcade Game
 
-A Python/Pygame recreation of the classic 1991 Konami arcade beat 'em up game "The Simpsons".
+A Python recreation of the classic 1991 Konami arcade beat 'em up game "The Simpsons".
+
+**Available in two versions:**
+- **Pygame Version**: Traditional desktop game with real-time action
+- **Streamlit Version**: Web-based, turn-based gameplay playable in your browser
 
 ### Features
 
@@ -29,12 +33,35 @@ A Python/Pygame recreation of the classic 1991 Konami arcade beat 'em up game "T
 
 ### How to Play
 
-Run the game:
+**Option 1: Streamlit Web Version (Recommended for beginners)**
+
+Run the web-based version in your browser:
+```bash
+streamlit run streamlit_simpsons_arcade.py
+```
+
+This will open the game in your default web browser. Features include:
+- Interactive web interface with buttons and controls
+- Turn-based gameplay
+- Difficulty selection (Easy, Normal, Hard)
+- Visual game stats and action log
+- No pygame/SDL dependencies required for display
+
+**Option 2: Pygame Desktop Version**
+
+Run the traditional desktop game:
 ```bash
 python simpsons_arcade.py
 ```
 
 ### Controls
+
+**Streamlit Version:**
+- Click movement buttons (⬅️ ➡️ ⬆️ ⬇️) to move your character
+- Click "⚔️ Attack" button to attack enemies
+- All interactions via web interface buttons
+
+**Pygame Version:**
 
 - **Arrow Keys**: Move your character (Left/Right/Up/Down)
 - **Z**: Attack
@@ -42,6 +69,17 @@ python simpsons_arcade.py
 - **ESC**: Return to menu / Quit game
 
 ### Gameplay
+
+**Streamlit Version:**
+1. **Character Selection**: Choose your character using radio buttons
+2. **Difficulty**: Select Easy, Normal, or Hard using the slider
+3. **Combat**: Click movement buttons to position yourself, then click Attack when enemies are in range
+4. **Turn-based**: Each action you take triggers enemy responses
+5. **Progress**: Defeat all enemies in each level to advance
+6. **Score**: Earn 100 points for each enemy defeated
+7. **Win Condition**: Complete all 3 levels to achieve victory
+
+**Pygame Version:**
 
 1. **Character Selection**: Use Up/Down arrow keys to select your character, press SPACE to start
 2. **Combat**: Use the Z key to attack enemies when they're in range
@@ -66,6 +104,16 @@ python simpsons_arcade.py
 
 ### Technical Details
 
+**Streamlit Version:**
+- Built with Python and Streamlit
+- Turn-based gameplay mechanics
+- PIL/Pillow for game rendering
+- Session state for game persistence
+- Web-based interface with responsive layout
+- No browser-specific requirements (works on all modern browsers)
+
+**Pygame Version:**
+
 - Built with Python and Pygame
 - 60 FPS gameplay
 - Simple sprite-based graphics
@@ -83,5 +131,25 @@ Potential features for future versions:
 - Sound effects and music
 - Special combo moves
 - Different enemy types
+
+### Browser Compatibility (Streamlit Version)
+
+The Streamlit version works on all modern web browsers:
+- ✅ Chrome/Chromium (Recommended)
+- ✅ Firefox
+- ✅ Safari
+- ✅ Edge
+- ✅ Mobile browsers (responsive layout)
+
+**System Requirements:**
+- Python 3.7 or higher
+- Modern web browser with JavaScript enabled
+- Internet connection (for initial Streamlit download)
+
+**Troubleshooting:**
+- If the game doesn't load, ensure you have the latest dependencies: `pip install -r requirements.txt --upgrade`
+- For slower connections, the initial load may take a few seconds
+- If buttons don't respond, try refreshing the browser page
+- Clear browser cache if you experience display issues
 
 Enjoy playing The Simpsons Arcade Game!
