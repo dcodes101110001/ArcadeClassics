@@ -23,3 +23,6 @@ wheels/
 env/
 venv/
 ENV/
+*.log
+.streamlit/
+nohup.out

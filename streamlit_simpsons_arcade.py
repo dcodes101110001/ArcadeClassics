@@ -126,7 +126,7 @@ class Enemy(Character):
         color = random.choice([PURPLE, GRAY, ORANGE])
         super().__init__(x, y, color, "Enemy", attack_power=8, health=30)
         
-    def ai_action(self, player):
+    def ai_action(self, player, damage_multiplier=1.0):
         """Simple AI behavior for turn-based gameplay"""
         # Calculate distance to player
         dx = player.x - self.x
@@ -137,8 +137,9 @@ class Enemy(Character):
             if self.attack():
                 attack_rect = self.get_attack_rect()
                 if player.collides_with(attack_rect):
-                    player.health -= self.attack_power
-                    return f"Enemy attacked {player.name} for {self.attack_power} damage!"
+                    damage = int(self.attack_power * damage_multiplier)
+                    player.health -= damage
+                    return f"Enemy attacked {player.name} for {damage} damage!"
             return "Enemy preparing to attack..."
         
         # Move towards player
@@ -268,7 +269,7 @@ def main():
     """Main Streamlit application"""
     st.set_page_config(
         page_title="The Simpsons Arcade Game",
-        page_icon="🎮",
+        page_icon="🎯",
         layout="wide"
     )
     
@@ -494,12 +495,9 @@ def enemy_actions():
     
     for enemy in st.session_state.enemies:
         enemy.update()
-        message = enemy.ai_action(player)
-        if message and "attacked" in message:
-            # Apply difficulty modifier
-            damage = int(enemy.attack_power * damage_multiplier)
-            player.health -= damage
-            add_to_log(f"Enemy attacks for {damage} damage!")
+        message = enemy.ai_action(player, damage_multiplier)
+        if message:
+            add_to_log(message)
     
     # Update player
     player.update()
