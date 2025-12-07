@@ -40,7 +40,7 @@ def test_pygame():
         os.environ['SDL_VIDEODRIVER'] = 'dummy'
         os.environ['SDL_AUDIODRIVER'] = 'dummy'
         
-        screen = pygame.display.set_mode((TEST_SCREEN_WIDTH, TEST_SCREEN_HEIGHT))
+        pygame.display.set_mode((TEST_SCREEN_WIDTH, TEST_SCREEN_HEIGHT))
         print(f"✓ pygame display initialized (headless mode)")
         
         pygame.quit()
