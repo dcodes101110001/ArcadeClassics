@@ -53,6 +53,8 @@ python verify_dependencies.py
 
 This will check pygame, SDL, streamlit, and all game modules.
 
+**For detailed troubleshooting**, see the [Setup Validation Guide](SETUP_VALIDATION.md).
+
 #### Platform-Specific Notes
 
 - **Linux**: Works out of the box with pip-installed pygame
@@ -202,9 +204,9 @@ The Streamlit version works on all modern web browsers:
 - Internet connection (for initial Streamlit download)
 
 **Troubleshooting:**
-- **pygame wheel build errors**: If you see errors about `_PyLong_AsByteArray` or pygame failing to build, you may be using Python 3.13. Either:
-  - Downgrade to Python 3.12 (recommended): `pyenv install 3.12.3 && pyenv local 3.12.3`
-  - Or upgrade pygame: `pip install pygame==2.6.1 --upgrade`
+- **pygame wheel build errors**: If you encounter errors about `_PyLong_AsByteArray` or pygame failing to build (typically when using Python 3.13 with older pygame versions), ensure you're using the dependencies from `requirements.txt`:
+  - First try: `pip install -r requirements.txt --upgrade`
+  - If issues persist with Python 3.13, downgrade to Python 3.12: `pyenv install 3.12.3 && pyenv local 3.12.3`
 - If the game doesn't load, ensure you have the latest dependencies: `pip install -r requirements.txt --upgrade`
 - For slower connections, the initial load may take a few seconds
 - If buttons don't respond, try refreshing the browser page

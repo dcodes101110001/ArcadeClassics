@@ -314,7 +314,11 @@ These are Linux packages installed via `apt-get` on Streamlit Cloud:
 
 **Pre-built wheels vs Building from source:**
 - **Pre-built wheels** (recommended): Include SDL2 binaries, no system libraries needed
-- **Building from source**: Requires system SDL2 development libraries AND compatible Python version (3.8-3.12 for pygame 2.5.x, 3.8-3.13 for pygame 2.6.1+)
+- **Building from source**: Requires:
+  - System SDL2 development libraries
+  - Compatible Python version:
+    - pygame 2.5.x: Python 3.8-3.12
+    - pygame 2.6.1+: Python 3.8-3.13
 
 **When are system SDL2 libraries needed?**
 - Building pygame from source (no wheel available for your platform)
