@@ -68,10 +68,12 @@ pip install -r requirements.txt
 
 **Note about Dependencies:**
 - The Streamlit version uses only streamlit and Pillow (not pygame)
-- However, `requirements.txt` includes pygame for users who want to run both versions
+- However, `requirements.txt` includes pygame 2.6.1 for users who want to run both versions
+- pygame 2.6.1 supports Python 3.8 through 3.13
 - pygame includes SDL2 libraries in pre-built wheels
 - System SDL2 libraries are auto-installed on Streamlit Cloud via `packages.txt`
 - No manual SDL2 installation needed for most users
+- **Python version**: 3.8 to 3.12 recommended (3.13 supported with pygame 2.6.1+)
 
 ### Starting the Game Locally
 
@@ -105,7 +107,8 @@ streamlit run streamlit_simpsons_arcade.py --server.port 8080
    - Click "Deploy"
 
 3. **Dependencies are handled automatically**
-   - `requirements.txt` → Python packages
+   - `runtime.txt` → Python 3.12.3
+   - `requirements.txt` → Python packages (pygame 2.6.1, streamlit, Pillow)
    - `packages.txt` → System SDL2 libraries
    - No additional configuration needed!
 

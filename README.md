@@ -25,9 +25,18 @@ A Python recreation of the classic 1991 Konami arcade beat 'em up game "The Simp
 
 ### Installation
 
+#### Prerequisites
+
+- **Python 3.8 to 3.12** (recommended: Python 3.12)
+- **Note**: Python 3.13 is supported with pygame 2.6.1+, but Python 3.12 is recommended for maximum stability
+
 #### Quick Start
 
-1. Make sure you have Python 3.7+ installed
+1. Make sure you have a compatible Python version installed:
+   ```bash
+   python3 --version  # Should show 3.8.x through 3.12.x (3.12 recommended)
+   ```
+
 2. Install the required dependencies:
    ```bash
    pip install -r requirements.txt
@@ -58,7 +67,7 @@ If you encounter SDL-related errors (`sdl2-config: not found`), you have two opt
 **Option 1: Use pre-built pygame wheels (recommended)**
 ```bash
 pip install --upgrade pip
-pip install pygame==2.5.2 --only-binary :all:
+pip install pygame==2.6.1 --only-binary :all:
 ```
 
 **Option 2: Install system SDL2 libraries**
@@ -188,11 +197,14 @@ The Streamlit version works on all modern web browsers:
 - ✅ Mobile browsers (responsive layout)
 
 **System Requirements:**
-- Python 3.7 or higher
+- Python 3.8 to 3.12 (recommended: Python 3.12)
 - Modern web browser with JavaScript enabled
 - Internet connection (for initial Streamlit download)
 
 **Troubleshooting:**
+- **pygame wheel build errors**: If you see errors about `_PyLong_AsByteArray` or pygame failing to build, you may be using Python 3.13. Either:
+  - Downgrade to Python 3.12 (recommended): `pyenv install 3.12.3 && pyenv local 3.12.3`
+  - Or upgrade pygame: `pip install pygame==2.6.1 --upgrade`
 - If the game doesn't load, ensure you have the latest dependencies: `pip install -r requirements.txt --upgrade`
 - For slower connections, the initial load may take a few seconds
 - If buttons don't respond, try refreshing the browser page
