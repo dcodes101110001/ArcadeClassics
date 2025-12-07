@@ -146,7 +146,7 @@ class Player(Character):
             self.max_health = 90
         elif character_type == "Lisa":
             self.attack_power = 11
-            self.speed = 5.5
+            self.speed = 5
             self.max_health = 95
         
         self.health = self.max_health

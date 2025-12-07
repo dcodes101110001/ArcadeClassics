@@ -63,8 +63,8 @@ def test_character_attack():
     """Test character attack"""
     print("Testing character attack...")
     char = Character(100, 100, (255, 0, 0), "Test")
-    assert char.attack() == True  # First attack should succeed
-    assert char.is_attacking == True
+    assert char.attack()  # First attack should succeed
+    assert char.is_attacking
     print("✓ Character attack test passed")
 
 def test_game_initialization():
