@@ -362,7 +362,18 @@ def test_dependency_compatibility() -> bool:
         
         # Test pygame doesn't interfere with PIL
         img = Image.new('RGB', (100, 100), color='red')
-        print_success("PIL works independently of pygame")
+        if isinstance(img, Image.Image):
+            print_success("PIL works independently of pygame and produces Image object")
+            print_info(f"Image size: {img.size}")
+            print_info(f"Image mode: {img.mode}")
+            if img.size == (100, 100):
+                print_success("Image has correct dimensions (100x100)")
+            else:
+                print_error(f"Image has incorrect dimensions: {img.size}")
+                return False
+        else:
+            print_error("PIL did not produce an Image object")
+            return False
         
         # Test version compatibility
         print_info(f"pygame: {pygame.version.ver}, SDL: {pygame.version.SDL}")
