@@ -12,7 +12,6 @@ Usage:
 
 import sys
 import subprocess
-import os
 from pathlib import Path
 
 
