@@ -53,7 +53,15 @@ python verify_dependencies.py
 
 This will check pygame, SDL, streamlit, and all game modules.
 
-**For detailed troubleshooting**, see the [Setup Validation Guide](SETUP_VALIDATION.md).
+**For comprehensive testing**, run the complete test suite:
+```bash
+python run_all_tests.py
+```
+
+**For detailed troubleshooting and build requirements**, see:
+- [Build Requirements Guide](BUILD_REQUIREMENTS.md) - Comprehensive build and dependency troubleshooting
+- [Setup Validation Guide](SETUP_VALIDATION.md) - Installation verification and common issues
+- [Deployment Guide](DEPLOYMENT.md) - Platform-specific deployment instructions
 
 #### Platform-Specific Notes
 
@@ -202,6 +210,44 @@ The Streamlit version works on all modern web browsers:
 - Python 3.8 to 3.12 (recommended: Python 3.12)
 - Modern web browser with JavaScript enabled
 - Internet connection (for initial Streamlit download)
+
+### Testing
+
+The project includes comprehensive test suites to validate installation, dependencies, and game functionality:
+
+**Run all tests:**
+```bash
+python run_all_tests.py
+```
+
+**Individual test suites:**
+```bash
+# Installation and environment validation
+python test_installation.py
+
+# Streamlit pipeline end-to-end tests
+python test_streamlit_pipeline.py
+
+# Pygame version unit tests
+python test_simpsons_arcade.py
+
+# Streamlit version unit tests
+python test_streamlit_simpsons.py
+
+# Dependency verification
+python verify_dependencies.py
+```
+
+**What is tested:**
+- ✅ Python version compatibility (3.8-3.13)
+- ✅ Build tools (pip, setuptools, wheel)
+- ✅ pygame and SDL2 installation
+- ✅ Streamlit installation and compatibility
+- ✅ Pillow/PIL image processing
+- ✅ Game logic and mechanics
+- ✅ Rendering system
+- ✅ Configuration files (requirements.txt, packages.txt, runtime.txt)
+- ✅ Deployment readiness
 
 **Troubleshooting:**
 - **pygame wheel build errors**: If you encounter errors about `_PyLong_AsByteArray` or pygame failing to build (typically when using Python 3.13 with older pygame versions), ensure you're using the dependencies from `requirements.txt`:

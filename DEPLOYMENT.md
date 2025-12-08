@@ -2,6 +2,8 @@
 
 This guide provides detailed instructions for deploying and running The Simpsons Arcade Game across different platforms and environments.
 
+**For comprehensive build requirements and troubleshooting**, see [BUILD_REQUIREMENTS.md](BUILD_REQUIREMENTS.md).
+
 ## Table of Contents
 - [Local Installation](#local-installation)
 - [Streamlit Cloud Deployment](#streamlit-cloud-deployment)
