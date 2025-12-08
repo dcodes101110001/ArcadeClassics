@@ -13,8 +13,6 @@ import sys
 import os
 import subprocess
 import platform
-from typing import Dict, List, Tuple, Optional
-
 # Test configuration
 MIN_PIP_VERSION = "23.0"
 MIN_SETUPTOOLS_VERSION = "65.0"
