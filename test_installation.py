@@ -199,7 +199,12 @@ def test_pygame_installation() -> bool:
         
         # Test display creation
         screen = pygame.display.set_mode((100, 100))
-        print_success("pygame display initialized successfully")
+        if screen is not None:
+            print_success("pygame display initialized successfully")
+            print_info(f"Display surface type: {type(screen)}")
+        else:
+            print_error("Failed to create pygame display surface")
+            return False
         
         pygame.quit()
         
