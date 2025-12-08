@@ -318,7 +318,8 @@ def test_rendering_system() -> bool:
         player = Player(100, 350, (0, 0, 255), "Bart", "Bart")
         enemies = [Enemy(300, 350), Enemy(500, 350)]
         
-        # Test rendering with correct parameters (player, enemies, ground_level, level)
+        # Test rendering with draw_game_screen(player, enemies, ground_level, level)
+        # ground_level determines where characters stand, level is the current game level
         ground_level = 350
         level = 1
         img = draw_game_screen(player, enemies, ground_level, level)
