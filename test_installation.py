@@ -382,7 +382,7 @@ def test_platform_info() -> None:
                     if line.startswith('PRETTY_NAME'):
                         print_info(f"Linux Distribution: {line.split('=')[1].strip().strip('\"')}")
                         break
-        except:
+        except Exception:
             pass
 
 
