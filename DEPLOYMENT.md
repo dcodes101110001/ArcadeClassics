@@ -12,8 +12,9 @@ This guide provides detailed instructions for deploying and running The Simpsons
 ## Local Installation
 
 ### Prerequisites
-- Python 3.7 or higher
+- **Python 3.8 to 3.12** (recommended: Python 3.12)
 - pip (Python package manager)
+- **Note**: Python 3.13 is supported with pygame 2.6.1+, but 3.12 is recommended for stability
 
 ### Quick Start
 
@@ -64,13 +65,19 @@ Streamlit Cloud is a free platform for hosting Streamlit apps. This game works p
 The repository includes two critical files for Streamlit Cloud deployment:
 
 1. **`requirements.txt`** - Python dependencies
-   - Contains pygame, streamlit, and Pillow
+   - Contains pygame 2.6.1, streamlit, and Pillow
+   - pygame 2.6.1 adds Python 3.13 support
    - pygame includes pre-built SDL2 binaries for Linux
 
 2. **`packages.txt`** - System dependencies (apt packages)
    - Contains SDL2 development libraries
    - Required if pygame needs to build from source
    - Auto-installed by Streamlit Cloud
+
+3. **`runtime.txt`** - Python version specification
+   - Specifies Python 3.12.3 for Streamlit Cloud
+   - Ensures compatible Python version for pygame
+   - Prevents wheel build issues on deployment
 
 ### Why packages.txt is Important
 
@@ -179,16 +186,22 @@ python simpsons_arcade.py  # or streamlit run streamlit_simpsons_arcade.py
 
 ## Troubleshooting
 
-### Error: "sdl2-config: not found"
+### Error: "sdl2-config: not found" or pygame wheel build failures
 
-This error occurs when pygame tries to build from source but can't find SDL2 system libraries.
+These errors occur when pygame tries to build from source but can't find SDL2 system libraries, or when using an incompatible Python version.
 
 **Solutions:**
 
-1. **Preferred: Use pre-built pygame wheels**
+1. **Check Python version**
+   ```bash
+   python3 --version  # Should be 3.8.x through 3.12.x
+   ```
+   If using Python 3.13, either downgrade to 3.12 or ensure pygame 2.6.1+ is installed.
+
+2. **Preferred: Use pre-built pygame wheels**
    ```bash
    pip install --upgrade pip
-   pip install pygame==2.5.2 --only-binary :all:
+   pip install pygame==2.6.1 --only-binary :all:
    ```
 
 2. **Install system SDL2 libraries**
@@ -204,8 +217,35 @@ This error occurs when pygame tries to build from source but can't find SDL2 sys
    ```
 
 3. **For Streamlit Cloud:**
+   - Ensure `runtime.txt` specifies Python 3.12.3
    - Ensure `packages.txt` is in the repository root
    - Contains the SDL2 library names (already configured)
+
+### Error: "_PyLong_AsByteArray" or "subprocess-exited-with-error"
+
+These errors occur when building pygame from source on incompatible Python versions (especially 3.13).
+
+**Solutions:**
+
+1. **Downgrade to Python 3.12 (recommended)**
+   ```bash
+   # Using pyenv
+   pyenv install 3.12.3
+   pyenv local 3.12.3
+   
+   # Or using conda
+   conda create -n arcade python=3.12
+   conda activate arcade
+   ```
+
+2. **Upgrade pygame to 2.6.1+**
+   ```bash
+   pip install pygame==2.6.1 --upgrade
+   ```
+
+3. **For Streamlit Cloud**
+   - Create `runtime.txt` with content: `python-3.12.3`
+   - This pins the Python version for deployment
 
 ### Error: "No module named 'pygame'"
 
@@ -247,11 +287,11 @@ streamlit run streamlit_simpsons_arcade.py --server.headless true
 
 ### Python Dependencies (requirements.txt)
 
-| Package | Version | Purpose | SDL Requirement |
-|---------|---------|---------|-----------------|
-| pygame | 2.5.2 | Desktop game engine | Includes SDL2 in wheels |
-| streamlit | >=1.28.0 | Web interface | Not required |
-| Pillow | >=10.0.0 | Image rendering | Not required |
+| Package | Version | Purpose | SDL Requirement | Python Version |
+|---------|---------|---------|-----------------|----------------|
+| pygame | 2.6.1 | Desktop game engine | Includes SDL2 in wheels | 3.8-3.13 |
+| streamlit | >=1.28.0 | Web interface | Not required | 3.8+ |
+| Pillow | >=10.0.0 | Image rendering | Not required | 3.8+ |
 
 ### System Dependencies (packages.txt)
 
@@ -274,7 +314,11 @@ These are Linux packages installed via `apt-get` on Streamlit Cloud:
 
 **Pre-built wheels vs Building from source:**
 - **Pre-built wheels** (recommended): Include SDL2 binaries, no system libraries needed
-- **Building from source**: Requires system SDL2 development libraries
+- **Building from source**: Requires:
+  - System SDL2 development libraries
+  - Compatible Python version:
+    - pygame 2.5.x: Python 3.8-3.12
+    - pygame 2.6.1+: Python 3.8-3.13
 
 **When are system SDL2 libraries needed?**
 - Building pygame from source (no wheel available for your platform)
@@ -377,7 +421,8 @@ Works out of the box! Just:
 
 3. **Pin pygame version**
    - Ensures consistent behavior
-   - `pygame==2.5.2` in requirements.txt
+   - `pygame==2.6.1` in requirements.txt
+   - Supports Python 3.8 through 3.13
 
 4. **Test locally before deploying**
    - Run `pip install -r requirements.txt`
@@ -400,12 +445,15 @@ Works out of the box! Just:
 ## Version Compatibility
 
 Tested and working on:
-- ✅ Python 3.8, 3.9, 3.10, 3.11, 3.12
+- ✅ Python 3.8, 3.9, 3.10, 3.11, 3.12 (recommended)
+- ✅ Python 3.13 (with pygame 2.6.1+)
 - ✅ Ubuntu 20.04, 22.04, 24.04
 - ✅ macOS 12+
 - ✅ Windows 10, 11
 - ✅ Streamlit Cloud
 - ✅ Docker containers
+
+**Note**: For maximum compatibility and stability, Python 3.12 is recommended.
 
 ## Summary
 
