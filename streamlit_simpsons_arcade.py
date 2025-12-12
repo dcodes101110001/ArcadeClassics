@@ -171,7 +171,7 @@ def draw_game_screen(player, enemies, ground_level, level):
         # Draw health bar
         health_bar_width = 40
         health_bar_height = 5
-        health_percentage = player.health / player.max_health if player.max_health > 0 else 0
+        health_percentage = max(0, player.health / player.max_health) if player.max_health > 0 else 0
         draw.rectangle([(player.x, player.y - 10), 
                        (player.x + health_bar_width, player.y - 10 + health_bar_height)], 
                       fill=RED)
@@ -196,7 +196,7 @@ def draw_game_screen(player, enemies, ground_level, level):
         # Draw health bar
         health_bar_width = 40
         health_bar_height = 5
-        health_percentage = enemy.health / enemy.max_health if enemy.max_health > 0 else 0
+        health_percentage = max(0, enemy.health / enemy.max_health) if enemy.max_health > 0 else 0
         draw.rectangle([(enemy.x, enemy.y - 10), 
                        (enemy.x + health_bar_width, enemy.y - 10 + health_bar_height)], 
                       fill=RED)

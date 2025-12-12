@@ -64,7 +64,7 @@ class Character:
         # Draw health bar
         health_bar_width = 40
         health_bar_height = 5
-        health_percentage = self.health / self.max_health if self.max_health > 0 else 0
+        health_percentage = max(0, self.health / self.max_health) if self.max_health > 0 else 0
         pygame.draw.rect(screen, RED, (self.x, self.y - 10, health_bar_width, health_bar_height))
         pygame.draw.rect(screen, GREEN, (self.x, self.y - 10, health_bar_width * health_percentage, health_bar_height))
         
