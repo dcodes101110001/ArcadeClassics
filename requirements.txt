@@ -1,0 +1,62 @@
+# ============================================================================
+# Core Dependencies for ArcadeClassics - Simpsons Arcade Game
+# ============================================================================
+# 
+# This file specifies Python package dependencies for both pygame desktop
+# and Streamlit web versions of the game.
+#
+# Build Requirements:
+# - pip >= 23.0 (for modern wheel support)
+# - setuptools >= 65.0 (for package building)
+# - wheel >= 0.40.0 (for binary distributions)
+#
+# Python Version Compatibility:
+# - Python 3.8 - 3.12: Fully tested and supported (recommended: 3.12)
+# - Python 3.13: Supported with pygame 2.6.1+
+# - Python 3.7: May work but not officially tested
+#
+# ============================================================================
+
+# pygame - 2D game library
+# ============================================================================
+# Version: 2.6.1 (latest stable as of Dec 2024)
+# 
+# Key Features:
+# - Includes SDL2 2.28.x libraries bundled in pre-built wheels
+# - No system SDL dependencies needed for most platforms
+# - Python 3.13 compatibility (fixes _PyLong_AsByteArray build errors)
+# - Pre-built wheels available for Windows, macOS, Linux (x86_64, ARM)
+#
+# Build Notes:
+# - Pre-built wheels include: SDL2, SDL2_image, SDL2_mixer, SDL2_ttf
+# - If wheel not available, requires system SDL2 development libraries
+# - See packages.txt for system dependencies (Streamlit Cloud, Linux builds)
+#
+# Critical: pygame 2.6.1+ required for Python 3.13 support
+# Earlier versions (2.5.x) fail on Python 3.13 with compilation errors
+pygame==2.6.1
+
+# streamlit - Web application framework
+# ============================================================================
+# Version: >= 1.28.0
+# 
+# Features:
+# - Provides web-based UI for turn-based game version
+# - No pygame/SDL display dependencies required
+# - Works in browser on all platforms
+# - Streamlit Cloud deployment compatible
+#
+# Note: Version 1.28.0+ includes improved session state and widget handling
+streamlit>=1.28.0
+
+# Pillow - Python Imaging Library
+# ============================================================================
+# Version: >= 10.0.0
+# 
+# Usage:
+# - Image rendering for Streamlit version (PIL/ImageDraw)
+# - Creating game graphics programmatically
+# - No system dependencies required (pure Python + bundled libs)
+#
+# Note: Version 10.0.0+ required for Python 3.12+ compatibility
+Pillow>=10.0.0
